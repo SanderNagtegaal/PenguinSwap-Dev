@@ -24,15 +24,9 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
   const usdcOutputPrice = useUSDCPrice(outputToken)
   const usdcInputPrice = useUSDCPrice(inputToken)
 
-  // Calculate output USD amounts
+  // Calculate input USD amount
   const totalInputUsdc =
     parseFloat(slippageAdjustedAmounts[Field.INPUT].toExact()) * parseFloat(usdcInputPrice.toSignificant())
-  const totalOutputUsdc =
-    parseFloat(slippageAdjustedAmounts.OUTPUT.toSignificant(4)) * parseFloat(usdcOutputPrice.toFixed(2))
-
-  // Calculate the arbitrage percentage and USD value
-  const arbitrageUsd = (totalOutputUsdc - totalInputUsdc).toFixed(2)
-  const arbitragePercentage = ((totalOutputUsdc / totalInputUsdc) * 100 - 100).toFixed(2)
 
   // Calculate the router fees for the PenguinSwap exchange. Next step is to read this from the smart contract.
   const routerFeePercentage = 0.0025
@@ -108,39 +102,7 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
         <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
           {'$' + routerFee}
         </TYPE.black>
-      </RowBetween>{' '}
-      {inputToken === outputToken ? (
-        totalOutputUsdc > totalInputUsdc ? (
-          <div>
-            <RowBetween>
-              <RowFixed>
-                <TYPE.black fontSize={14} fontWeight={600} color={theme.text2}>
-                  {'Arbitrage percentage'}
-                </TYPE.black>
-                <QuestionHelper text="The approximate percentage gained from the arbitrage based on the minimum received amount." />
-              </RowFixed>
-              <TYPE.black fontSize={14} fontWeight={400} color="#1E67E1">
-                {arbitragePercentage + '%'}
-              </TYPE.black>
-            </RowBetween>
-            <RowBetween>
-              <RowFixed>
-                <TYPE.black fontSize={14} fontWeight={600} color={theme.text2}>
-                  {'Arbitrage USD amount'}
-                </TYPE.black>
-                <QuestionHelper text="The approximate USD value gained from the arbitrage based on the minimum received amount." />
-              </RowFixed>
-              <TYPE.black fontSize={14} fontWeight={400} color="#1E67E1">
-                {'$' + arbitrageUsd}
-              </TYPE.black>
-            </RowBetween>
-          </div>
-        ) : (
-          ''
-        )
-      ) : (
-        ''
-      )}
+      </RowBetween>
     </AutoColumn>
   )
 }
