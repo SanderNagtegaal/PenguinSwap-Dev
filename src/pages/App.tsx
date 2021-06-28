@@ -31,6 +31,7 @@ import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, Redirec
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
 import ShowTeamPage from './AboutTheTeam'
+import AfterStaking from '../components/AfterStaking/AfterStaking'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -119,6 +120,7 @@ export default function App() {
           <Marginer />
         </BodyWrapper>
       </AppWrapper>
+      <Route exact path="/swap" component={AfterStaking} />
     </Suspense>
   )
 }
