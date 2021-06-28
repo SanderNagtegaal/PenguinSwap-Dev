@@ -17,13 +17,12 @@ const Button = styled.button`
   clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
 
   :hover {
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     background-color: #411789;
   }
 
   :active {
     background-color: #fed800;
-    box-shadow: 0 5px #666;
     transition-duration: 0.1s;
     transform: translateY(4px);
   }
@@ -151,7 +150,7 @@ const Messages = styled.div`
     }
   }
 `
-function AfterStaking() {
+const AfterStaking = () => {
   return (
     <BodyWrapper>
       <Messages>
