@@ -13,16 +13,18 @@ const Button = styled.button`
   background-color: #9999ff;
   border: none;
   margin: auto;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
+  -webkit-clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
+  clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
 
   :hover {
+    transition-duration: 0.5s;
     background-color: #411789;
   }
 
   :active {
     background-color: #fed800;
     box-shadow: 0 5px #666;
+    transition-duration: 0.1s;
     transform: translateY(4px);
   }
 `
@@ -64,8 +66,8 @@ const Messages = styled.div`
     overflow: hidden;
     cursor: crosshair;
     transition: all 0.1s ease-out;
-    -webkit-clip-path: polygon(25px 0%, 100% 0%, calc(100% - 25px) 100%, 0% 100%);
-    clip-path: polygon(25px 0%, 100% 0%, calc(100% - 25px) 100%, 0% 100%);
+    -webkit-clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
     background: #fedd00;
     padding: 20px 15px 18px 35px;
     font-size: 1em;
