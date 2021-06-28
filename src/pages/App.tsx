@@ -31,7 +31,6 @@ import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, Redirec
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
 import ShowTeamPage from './AboutTheTeam'
-import CryptoKek from 'components/CryptoKek'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -120,7 +119,6 @@ export default function App() {
           <Marginer />
         </BodyWrapper>
       </AppWrapper>
-      <Route exact strict path="/swap" component={CryptoKek} />
     </Suspense>
   )
 }
