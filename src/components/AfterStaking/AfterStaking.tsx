@@ -1,5 +1,15 @@
+import { TokenAmount } from '@uniswap/sdk'
 import React from 'react'
+import { useTotalUniEarned } from 'state/stake/hooks'
 import styled from 'styled-components'
+
+const MessageText = styled.text`
+  @charset "UTF-8";
+  @import url('https://fonts.googleapis.com/css?family=Lato:400,900|Open+Sans:400,800');
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+`
 
 const Button = styled.button`
   display: inline-block;
@@ -13,6 +23,7 @@ const Button = styled.button`
   background-color: #9999ff;
   border: none;
   margin: auto;
+  margin-top: 40px;
   -webkit-clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
   clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
 
@@ -23,6 +34,7 @@ const Button = styled.button`
 
   :active {
     background-color: #fed800;
+    color: black;
     transition-duration: 0.1s;
     transform: translateY(4px);
   }
@@ -55,12 +67,14 @@ const Messages = styled.div`
     width: 90%;
     padding: 0 30px;
     margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
     box-sizing: border-box;
   }
 
   summary {
     position: relative;
-    font-size: 46px;
+    font-size: 1em;
     outline: 0;
     overflow: hidden;
     cursor: crosshair;
@@ -69,7 +83,6 @@ const Messages = styled.div`
     clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
     background: #fedd00;
     padding: 20px 15px 18px 35px;
-    font-size: 1em;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     color: #333;
@@ -84,6 +97,7 @@ const Messages = styled.div`
     display: none;
   }
   summary:hover {
+    cursor: pointer;
     text-indent: 30px;
   }
   summary:hover:before {
@@ -150,40 +164,40 @@ const Messages = styled.div`
     }
   }
 `
-const AfterStaking = () => {
+const AfterStaking = ({ setShowUniBalanceModal }: { setShowUniBalanceModal: any }) => {
+  const uniToClaim: TokenAmount | undefined = useTotalUniEarned()
+
   return (
     <BodyWrapper>
       <Messages>
         <details>
           <summary>A message from us Penguins!</summary>
-          <h2 style={{ fontSize: '18px', marginTop: '10px', marginBottom: '10px' }}>
-            First we would like to thank you!
-          </h2>
+          <MessageText>First we would like to thank you!</MessageText>
         </details>
       </Messages>
       <Messages>
         <details>
           <summary>Staking</summary>
-          <h2 style={{ fontSize: '18px', marginTop: '10px', marginBottom: '10px' }}>
+          <MessageText>
             Our staking program has been a huge succes and we could not have done it without you!
-          </h2>
+          </MessageText>
         </details>
       </Messages>
       <Messages>
         <details>
           <summary>Claim</summary>
-          <h2 style={{ fontSize: '18px', marginTop: '10px', marginBottom: '10px' }}>
-            You have (I'm going to put the claimable amount of fish here if possible without slowing the thing down)
-            fish to claim. Go to the staking page to claim you fish!
-          </h2>
+          <MessageText>
+            You have {uniToClaim?.toFixed(2, { groupSeparator: ',' })} fish to claim. Go to the staking page to CLAIM
+            you fish!
+          </MessageText>
         </details>
       </Messages>
       <Messages>
         <details>
           <summary>News</summary>
-          <h2 style={{ fontSize: '18px', marginTop: '-10px', marginBottom: '10px' }}>
+          <MessageText>
             We will launch our V3 exchange with advanced analytics and charting soon! Stay tuned!
-          </h2>
+          </MessageText>
         </details>
       </Messages>
       <Button>Dismiss this message</Button>
