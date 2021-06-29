@@ -1,10 +1,7 @@
-import { TokenAmount } from '@uniswap/sdk'
-import React from 'react'
-import { useTotalUniEarned } from 'state/stake/hooks'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const MessageText = styled.text`
-  @charset "UTF-8";
   @import url('https://fonts.googleapis.com/css?family=Lato:400,900|Open+Sans:400,800');
   font-family: 'Lato', sans-serif;
   font-size: 18px;
@@ -59,7 +56,6 @@ const BodyWrapper = styled.div`
 `
 
 const Messages = styled.div`
-  @charset "UTF-8";
   @import url('https://fonts.googleapis.com/css?family=Lato:400,900|Open+Sans:400,800');
 
   details {
@@ -164,45 +160,60 @@ const Messages = styled.div`
     }
   }
 `
-const AfterStaking = ({ setShowUniBalanceModal }: { setShowUniBalanceModal: any }) => {
-  const uniToClaim: TokenAmount | undefined = useTotalUniEarned()
 
-  return (
-    <BodyWrapper>
-      <Messages>
-        <details>
-          <summary>A message from us Penguins!</summary>
-          <MessageText>First we would like to thank you!</MessageText>
-        </details>
-      </Messages>
-      <Messages>
-        <details>
-          <summary>Staking</summary>
-          <MessageText>
-            Our staking program has been a huge succes and we could not have done it without you!
-          </MessageText>
-        </details>
-      </Messages>
-      <Messages>
-        <details>
-          <summary>Claim</summary>
-          <MessageText>
-            You have {uniToClaim?.toFixed(2, { groupSeparator: ',' })} fish to claim. Go to the staking page to CLAIM
-            you fish!
-          </MessageText>
-        </details>
-      </Messages>
-      <Messages>
-        <details>
-          <summary>News</summary>
-          <MessageText>
-            We will launch our V3 exchange with advanced analytics and charting soon! Stay tuned!
-          </MessageText>
-        </details>
-      </Messages>
-      <Button>Dismiss this message</Button>
-    </BodyWrapper>
-  )
+const AfterStaking = () => {
+  // Create a dismiss value so that the component disappears after the user click the button
+  // Also create the function be called by the button
+  const [dismissValue, setDismissValue] = useState('false')
+
+  const setButtonDismissed = () => {
+    setDismissValue('true')
+  }
+
+  // Check if "Dismiss message" button has been clicked. If true, don't display this component
+  if (dismissValue === 'true') {
+    return null
+  } else {
+    return (
+      <BodyWrapper>
+        <Messages>
+          <details>
+            <summary>A message from us Penguins!</summary>
+            <MessageText>First we would like to thank you!</MessageText>
+          </details>
+        </Messages>
+        <Messages>
+          <details>
+            <summary>Staking</summary>
+            <MessageText>
+              Our staking program has been a huge succes and we could not have done it without you!
+            </MessageText>
+          </details>
+        </Messages>
+        <Messages>
+          <details>
+            <summary>Claim</summary>
+            <MessageText>
+              You might have fish to claim if you staked. Go to the staking page to{' '}
+              <a href="#/uni" style={{ color: 'white' }}>
+                CLAIM
+              </a>{' '}
+              your fish!
+            </MessageText>
+          </details>
+        </Messages>
+        <Messages>
+          <details>
+            <summary>News</summary>
+            <MessageText>
+              We will launch our V3 exchange with advanced analytics and charting soon. Thanks for being with us!
+            </MessageText>
+          </details>
+        </Messages>
+        <Button onClick={setButtonDismissed}>Dismiss this message</Button>
+      </BodyWrapper>
+    )
+  }
 }
 
 export default AfterStaking
