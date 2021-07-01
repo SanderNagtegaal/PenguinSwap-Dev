@@ -25,8 +25,6 @@ import DoubleCurrencyLogo from '../DoubleLogo'
 import { RowBetween, RowFixed } from '../Row'
 import { Dots } from '../swap/styleds'
 
-
-
 export const FixedHeightRow = styled(RowBetween)`
   height: 24px;
 `
@@ -46,13 +44,13 @@ const StyledPositionCard = styled(LightCard)<{ bgColor: any }>`
 `
 
 const ThemedText = styled(Text)`
-  color: ${({ theme }) => theme.text2}
+  color: ${({ theme }) => theme.text2};
 `
 
 interface PositionCardProps {
   pair: Pair
   showUnwrapped?: boolean
-  border?: string,
+  border?: string
 }
 
 export function MinimalPositionCard({ pair, showUnwrapped = false, border }: PositionCardProps) {
@@ -87,7 +85,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
   return (
     <>
       {userPoolBalance && JSBI.greaterThan(userPoolBalance.raw, JSBI.BigInt(0)) ? (
-        <GreyCard border={border} >
+        <GreyCard border={border}>
           <AutoColumn gap="6px">
             <FixedHeightRow>
               <RowFixed>
@@ -216,15 +214,15 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
                 <>
                   {' '}
                   <ThemedText>
-                  Manage
-                  <ChevronUp size="20" style={{ marginLeft: '10px' }} />
+                    Manage
+                    <ChevronUp size="20" style={{ marginLeft: '10px' }} />
                   </ThemedText>
                 </>
               ) : (
                 <>
-                <ThemedText>
-                  Manage
-                  <ChevronDown size="20" style={{ marginLeft: '10px' }} />
+                  <ThemedText>
+                    Manage
+                    <ChevronDown size="20" style={{ marginLeft: '10px' }} />
                   </ThemedText>
                 </>
               )}
@@ -290,7 +288,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
             <ButtonSecondary padding="8px" borderRadius="8px">
               <ExternalLink
                 style={{ width: '100%', textAlign: 'center' }}
-                href={`https://uniswap.info/account/${account}`}
+                href={`https://penguinalytics.eth.link/#/account/${account}`}
               >
                 View accrued fees and analytics<span style={{ fontSize: '11px' }}>↗</span>
               </ExternalLink>
