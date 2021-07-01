@@ -16,7 +16,7 @@ export default function ShowTeamPage() {
     justify-content: space-around;
     align-items: center;
     margin-top: -2%;
-    width: 70%
+    width: 70%;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px 20px 0 0;
   `
@@ -116,7 +116,7 @@ export default function ShowTeamPage() {
         <Devs className="devs">
           <div className="dev">
             <img className="team-photo" src={PinkLogo} alt="" />
-            <h3>Summer</h3>
+            <h3>Andy's Wallpaper</h3>
             COO / Project Manager
           </div>
 
