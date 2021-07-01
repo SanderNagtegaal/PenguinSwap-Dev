@@ -103,7 +103,7 @@ const EmptyProposals = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color:white;
+  background-color: white;
 `
 
 export default function Vote() {
@@ -133,7 +133,7 @@ export default function Vote() {
         onDismiss={toggelDelegateModal}
         title={showUnlockVoting ? 'Unlock Votes' : 'Update Delegation'}
       />
-      <TopSection gap="md" style={{ backgroundColor: 'rgba(255,192,203, 0.5)'}}>
+      <TopSection gap="md" style={{ backgroundColor: 'rgba(255,192,203, 0.5)' }}>
         <VoteCard>
           <CardBGImage />
           <CardNoise />
@@ -161,7 +161,7 @@ export default function Vote() {
           <CardNoise />
         </VoteCard>
       </TopSection>
-      <TopSection gap="2px" style={{ backgroundColor: 'rgba(255,192,203, 0.5)'}}>
+      <TopSection gap="2px" style={{ backgroundColor: 'rgba(255,192,203, 0.5)' }}>
         <WrapSmall>
           <TYPE.white style={{ margin: '0.5rem 0.5rem 0.5rem 0', flexShrink: 0 }}>Proposals</TYPE.white>
           {(!allProposals || allProposals.length === 0) && !availableVotes && <Loader />}
@@ -232,9 +232,6 @@ export default function Vote() {
           )
         })}
       </TopSection>
-      <TYPE.subHeader color="yellow">
-        A minimum threshhold of 1% of the total UNI supply is required to submit proposals
-      </TYPE.subHeader>
     </PageWrapper>
   )
 }
