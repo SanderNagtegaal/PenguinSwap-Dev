@@ -179,26 +179,21 @@ const AfterStaking = () => {
         <Messages>
           <details>
             <summary>A message from us Penguins!</summary>
-            <MessageText>First we would like to thank you!</MessageText>
+            <MessageText>
+              The Penguin Party team would like to personally thank everyone for participating in our staking rewards!
+            </MessageText>
           </details>
         </Messages>
         <Messages>
           <details>
             <summary>Staking</summary>
             <MessageText>
-              Our staking program has been a huge succes and we could not have done it without you!
-            </MessageText>
-          </details>
-        </Messages>
-        <Messages>
-          <details>
-            <summary>Claim</summary>
-            <MessageText>
-              You might have fish to claim if you staked. Go to the staking page to{' '}
+              The staking program has been a huge success and we couldn't have done it without you! We request everyone
+              to please{' '}
               <a href="#/uni" style={{ color: 'white' }}>
-                CLAIM
+                UNSTAKE
               </a>{' '}
-              your fish!
+              their LP tokens which will automatically reward your unclaimed FISH.
             </MessageText>
           </details>
         </Messages>
@@ -206,7 +201,7 @@ const AfterStaking = () => {
           <details>
             <summary>News</summary>
             <MessageText>
-              We will launch our V3 exchange with advanced analytics and charting soon. Thanks for being with us!
+              Penguin Swap will soon be launching on UNIV3 with new advanced analytics, charting and a new design!
             </MessageText>
           </details>
         </Messages>
