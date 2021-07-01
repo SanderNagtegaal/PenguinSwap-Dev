@@ -13,8 +13,8 @@ import { useActiveWeb3React } from '../../hooks'
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
   width: 100%;
-  background-color:rgba(200,200,200,0.7);
-  border-radius:10%;
+  background-color: rgba(200, 200, 200, 0.7);
+  border-radius: 10%;
 `
 
 const TopSection = styled(AutoColumn)`
@@ -56,15 +56,16 @@ export default function Earn() {
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive {' '}
-                <span role="img" aria-label="FISH">
-                  🐟
-                </span>{' '}, the PenguinSwap protocol governance token.
+                  Deposit your Liquidity Provider tokens to receive{' '}
+                  <span role="img" aria-label="FISH">
+                    🐟
+                  </span>{' '}
+                  , the PenguinSwap protocol governance token.
                 </TYPE.white>
               </RowBetween>{' '}
               <ExternalLink
                 style={{ color: 'white', textDecoration: 'underline' }}
-                href="https://uniswap.org/blog/uni/"
+                href="https://hiturunk.medium.com/penguin-party-fish-token-has-launched-cae89f870314"
                 target="_blank"
               >
                 <TYPE.white fontSize={14}>Read more about FISH</TYPE.white>
@@ -77,7 +78,7 @@ export default function Earn() {
       </TopSection>
 
       <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
-        <DataRow style={{ alignItems: 'baseline', paddingLeft: '1rem', paddingRight: '1rem'}}>
+        <DataRow style={{ alignItems: 'baseline', paddingLeft: '1rem', paddingRight: '1rem' }}>
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
           <Countdown exactEnd={stakingInfos?.[0]?.periodFinish} />
         </DataRow>
