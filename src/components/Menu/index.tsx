@@ -106,7 +106,7 @@ export default function Menu() {
           <MenuItem id="link" href={PENGUIN_URLS.github}>
             GitHub
           </MenuItem>
-          <MenuItem id="link" href={PENGUIN_URLS.github}>
+          <MenuItem id="link" href={PENGUIN_URLS.discord}>
             Discord
           </MenuItem>
           <MenuItem id="link" href={PENGUIN_URLS.treasury}>
