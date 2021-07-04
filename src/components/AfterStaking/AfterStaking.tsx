@@ -201,7 +201,8 @@ const AfterStaking = () => {
           <details>
             <summary>News</summary>
             <MessageText>
-              Penguin Swap will soon be launching on UNIV3 with new advanced analytics, charting and a new design!
+              Penguin Swap will soon be launching on UNIV3 with new advanced analytics, charting and a new design! Since
+              Staking has ended we can create new governance proposals and resume voting!
             </MessageText>
           </details>
         </Messages>
