@@ -1,3 +1,6 @@
+// Currently we don't have a V3 router version, this has to be changed when it's done
+//export const ROUTER_ADDRESS = '0xc9F8878ebBA65Ab04743f374f57fB652981e222c'
+
 // a list of tokens by chain
 import { Currency, Token } from '@uniswap/sdk-core'
 import { SupportedChainId } from './chains'
@@ -19,6 +22,22 @@ import {
   WBTC,
   ETH2X_FLI,
   WETH9_EXTENDED,
+  FISH,
+  UNITOKEN,
+  CRAB,
+  SHRIMP,
+  LINK,
+  BUIDL,
+  DFOUSD,
+  ISLA,
+  JRT,
+  KEK,
+  MEME,
+  MKR,
+  SAREN,
+  SOCKS,
+  TORI,
+  YTSLA,
 } from './tokens'
 
 type ChainTokenList = {
@@ -60,7 +79,29 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [1]: [...WETH_ONLY[1], DAI, USDC, USDT, WBTC],
+  [1]: [
+    ...WETH_ONLY[1],
+    DAI,
+    USDC,
+    USDT,
+    WBTC,
+    FISH,
+    CRAB,
+    SHRIMP,
+    TORI,
+    UNITOKEN,
+    LINK,
+    BUIDL,
+    MKR,
+    SOCKS,
+    DFOUSD,
+    JRT,
+    KEK,
+    MEME,
+    YTSLA,
+    ISLA,
+    SAREN,
+  ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [1]: {
@@ -107,7 +148,28 @@ export const COMMON_BASES: ChainCurrencyList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [1]: [...WETH_ONLY[1], DAI, USDC, USDT, WBTC],
+  [1]: [
+    ...WETH_ONLY[1],
+    DAI,
+    USDC,
+    USDT,
+    WBTC,
+    FISH,
+    UNITOKEN,
+    CRAB,
+    SHRIMP,
+    LINK,
+    BUIDL,
+    TORI,
+    MKR,
+    SOCKS,
+    DFOUSD,
+    KEK,
+    MEME,
+    YTSLA,
+    ISLA,
+    SAREN,
+  ],
 }
 export const PINNED_PAIRS: { readonly [chainId: number]: [Token, Token][] } = {
   [1]: [

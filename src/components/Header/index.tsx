@@ -11,8 +11,8 @@ import { useUserHasSubmittedClaim } from 'state/transactions/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
 import { useETHBalances } from 'state/wallet/hooks'
 import styled from 'styled-components/macro'
-import Logo from '../../assets/svg/logo.svg'
-import LogoDark from '../../assets/svg/logo_white.svg'
+import Logo from '../../assets/svg/logo_simple.svg'
+import LogoDark from '../../assets/svg/logo_simple.svg'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { ExternalLink, TYPE } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
@@ -35,7 +35,7 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   width: 100%;
   top: 0;
   position: relative;
-  padding: 1rem;
+  padding: 0.5rem;
   z-index: 21;
   position: relative;
 
@@ -107,11 +107,11 @@ const HeaderRow = styled(RowFixed)`
 `
 
 const HeaderLinks = styled(Row)`
-  justify-self: center;
-  background-color: ${({ theme }) => theme.bg0};
+  //  background-color: ${({ theme }) => theme.bg0};
+
   width: fit-content;
-  padding: 4px;
-  border-radius: 16px;
+  padding: 10px;
+  border-radius: 10px;
   display: grid;
   grid-auto-flow: column;
   grid-gap: 10px;
@@ -188,68 +188,129 @@ const Title = styled.a`
 const UniIcon = styled.div`
   transition: transform 0.3s ease;
   :hover {
-    transform: rotate(-5deg);
+    transform: rotate(-180deg);
   }
 `
 
 const activeClassName = 'ACTIVE'
 
+// Button colours
+const clrNeon = 'hsl(317 100% 54%)'
+const clrBg = 'hsl(323 21% 16%)'
+
 const StyledNavLink = styled(NavLink).attrs({
   activeClassName,
 })`
   ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
-  border-radius: 3rem;
-  outline: none;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+  font-size: 1.3rem;
+  display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text2};
-  font-size: 1rem;
-  width: fit-content;
-  font-weight: 500;
-  padding: 8px 12px;
-  word-break: break-word;
+  color: ${clrNeon};
+  border: ${clrNeon} 0.1em solid;
+  padding: 0.25em 0.4em;
+  border-radius: 0.25em;
+  text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.3), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 0.5em 0 ${clrNeon}, 0 0 0.5em 0 ${clrNeon};
+  position: relative;
+}
 
-  &.${activeClassName} {
-    border-radius: 12px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text1};
-    background-color: ${({ theme }) => theme.bg2};
-  }
+::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 0.05em 0.05em ${clrNeon};
+  opacity: 0;
+  background-color: ${clrNeon};
+  z-index: -1;
+  transition: opacity 100ms linear;
+}
 
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
-  }
+:hover,
+:focus {
+  color: ${clrBg};
+  text-shadow: none;
+}
+
+:hover::before,
+:focus::before {
+  opacity: 1;
+}
+
+:hover::after,
+:focus::after {
+  opacity: 1;
+}
+`
+// I created an extra styled button to hide it on smaller screen sizes
+const StyledNavLinkHidable = styled(StyledNavLink)`
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+      display: none; 
+`}
 `
 
 const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName,
 })<{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
-  border-radius: 3rem;
-  outline: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+  font-size: 1.3rem;
+  display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text2};
-  font-size: 1rem;
-  width: fit-content;
-  margin: 0 12px;
-  font-weight: 500;
+  color: ${clrNeon};
+  border: ${clrNeon} 0.1em solid;
+  padding: 0.25em 0.4em;
+  border-radius: 0.25em;
+  text-shadow: 0 0 0.125em rgba(255, 255, 255, 0.3), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 0.5em 0 ${clrNeon}, 0 0 0.5em 0 ${clrNeon};
+  position: relative;
+}
 
-  &.${activeClassName} {
-    border-radius: 12px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text1};
-  }
+::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 0.05em 0.05em ${clrNeon};
+  opacity: 0;
+  background-color: ${clrNeon};
+  z-index: -1;
+  transition: opacity 100ms linear;
+}
 
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
-    text-decoration: none;
-  }
+:hover,
+:focus {
+  color: ${clrBg};
+  text-shadow: none;
+}
 
+:hover::before,
+:focus::before {
+  opacity: 1;
+}
+
+:hover::after,
+:focus::after {
+  opacity: 1;
+}
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
       display: none;
 `}
@@ -311,7 +372,7 @@ export default function Header() {
       <HeaderRow>
         <Title href=".">
           <UniIcon>
-            <img width={'24px'} src={darkMode ? LogoDark : Logo} alt="logo" />
+            <img width={'50px'} src={darkMode ? LogoDark : Logo} alt="logo" />
           </UniIcon>
         </Title>
       </HeaderRow>
@@ -332,13 +393,15 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
+        <StyledNavLinkHidable id={`stake-nav-link`} to={'/vote'}>
           <Trans>Vote</Trans>
-        </StyledNavLink>
+        </StyledNavLinkHidable>
         <StyledExternalLink id={`stake-nav-link`} href={'https://info.uniswap.org'}>
           <Trans>Charts</Trans>
-          <sup>↗</sup>
         </StyledExternalLink>
+        <StyledNavLink id={`stake-nav-link`} to={'/about'}>
+          <Trans>About</Trans>
+        </StyledNavLink>
       </HeaderLinks>
       <HeaderControls>
         <HeaderElement>

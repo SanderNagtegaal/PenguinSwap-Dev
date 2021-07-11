@@ -1,16 +1,14 @@
 import React, { useRef } from 'react'
-import { BookOpen, Code, Info, MessageCircle, PieChart } from 'react-feather'
+import { BookOpen, ThumbsUp, GitHub, Info, MessageCircle, Package, PieChart, Video } from 'react-feather'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components/macro'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
-import { useActiveWeb3React } from '../../hooks/web3'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { Trans } from '@lingui/macro'
 import { ExternalLink } from '../../theme'
-import { ButtonPrimary } from '../Button'
-import { L2_CHAIN_IDS } from 'constants/chains'
+import { PENGUIN_URLS } from 'constants/misc'
 
 export enum FlyoutAlignment {
   LEFT = 'LEFT',
@@ -46,12 +44,6 @@ const StyledMenuButton = styled.button`
   svg {
     margin-top: 2px;
   }
-`
-
-const UNIbutton = styled(ButtonPrimary)`
-  background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
-  border: none;
 `
 
 const StyledMenu = styled.div`
@@ -122,17 +114,11 @@ const InternalMenuItem = styled(Link)`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
-
 export default function Menu() {
-  const { account, chainId } = useActiveWeb3React()
-
   const node = useRef<HTMLDivElement>()
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
-  const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
-  const showUNIClaimOption = Boolean(!!account && !!chainId && !L2_CHAIN_IDS.includes(chainId))
 
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
@@ -143,41 +129,59 @@ export default function Menu() {
 
       {open && (
         <MenuFlyout>
-          <MenuItem href="https://uniswap.org/">
+          <MenuItem href={PENGUIN_URLS.home}>
             <Info size={14} />
             <div>
-              <Trans>About</Trans>
+              <Trans>Home Page</Trans>
             </div>
           </MenuItem>
-          <MenuItem href="https://docs.uniswap.org/">
-            <BookOpen size={14} />
-            <div>
-              <Trans>Docs</Trans>
-            </div>
-          </MenuItem>
-          <MenuItem href={CODE_LINK}>
-            <Code size={14} />
-            <div>
-              <Trans>Code</Trans>
-            </div>
-          </MenuItem>
-          <MenuItem href="https://discord.gg/FCfyBSbCU5">
+          <MenuItem href={PENGUIN_URLS.discord}>
             <MessageCircle size={14} />
             <div>
               <Trans>Discord</Trans>
             </div>
           </MenuItem>
+          <MenuItem href={PENGUIN_URLS.github}>
+            <GitHub size={14} />
+            <div>
+              <Trans>GitHub</Trans>
+            </div>
+          </MenuItem>
+
+          <MenuItem href={PENGUIN_URLS.treasury}>
+            <Package size={14} />
+            <div>
+              <Trans>Treasury</Trans>
+            </div>
+          </MenuItem>
+
+          <MenuItem href={PENGUIN_URLS.youtube}>
+            <Video size={14} />
+            <div>
+              <Trans>YouTube</Trans>
+            </div>
+          </MenuItem>
+
+          <MenuItem href={PENGUIN_URLS.voting}>
+            <ThumbsUp size={14} />
+            <div>
+              <Trans>Voting</Trans>
+            </div>
+          </MenuItem>
+
           <MenuItem href="https://info.uniswap.org/">
             <PieChart size={14} />
             <div>
               <Trans>Analytics</Trans>
             </div>
           </MenuItem>
-          {showUNIClaimOption && (
-            <UNIbutton onClick={openClaimModal} padding="8px 16px" width="100%" $borderRadius="12px" mt="0.5rem">
-              <Trans>Claim UNI</Trans>
-            </UNIbutton>
-          )}
+
+          <MenuItem href="https://docs.uniswap.org/">
+            <BookOpen size={14} />
+            <div>
+              <Trans>Docs</Trans>
+            </div>
+          </MenuItem>
         </MenuFlyout>
       )}
     </StyledMenu>
