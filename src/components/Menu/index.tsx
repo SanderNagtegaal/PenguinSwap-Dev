@@ -165,7 +165,7 @@ export default function Menu() {
           <MenuItem href={PENGUIN_URLS.voting}>
             <ThumbsUp size={14} />
             <div>
-              <Trans>Voting</Trans>
+              <Trans>Snapshot Page</Trans>
             </div>
           </MenuItem>
 
