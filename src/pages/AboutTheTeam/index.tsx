@@ -1,16 +1,9 @@
-import React from 'react'
 import styled from 'styled-components/macro'
 import PinkLogo from '../../../src/assets/images/penguinparty/cbwg.png'
 import './style.css'
-import { PENGUIN_URLS } from '../../constants/misc'
-import { KEK, ISLA, SAREN } from '../../constants/tokens'
 import { VERSION } from '../../constants/misc'
 // Import the required images
-import CryptokekLogo from '../../assets/images/penguinparty/cryptokek.png'
 import HiturunkSelfie from '../../../src/assets/images/penguinparty/hiturunk.jpg'
-import DefiVille from '../../../src/assets/images/penguinparty/defiville.svg'
-import PenguinMainLogo from '../../../src/assets/images/penguinparty/cb.png'
-import SarenLogo from '../../../src/assets/images/penguinparty/saren.png'
 
 export default function ShowTeamPage() {
   const PenguinParty = styled.div`
@@ -19,6 +12,7 @@ export default function ShowTeamPage() {
     align-items: center;
     margin-top: -1%;
     width: 70%;
+    max-width: 1200px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 20px 20px 0 0;
   `
@@ -34,6 +28,7 @@ export default function ShowTeamPage() {
     flex-direction: column;
     width: 70%;
     text-align: center;
+    max-width: 1200px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0px 0px 20px 20px;
     padding-bottom: 1rem;
@@ -49,8 +44,6 @@ export default function ShowTeamPage() {
     margin-bottom: 5%;
   `
   const Devs = styled.div`
-    background-position: cover;
-    color: white;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -58,34 +51,14 @@ export default function ShowTeamPage() {
     place-items: center;
     text-align: center;
     margin: 0 auto;
+    margin-bottom: 100px;
   `
-  const Partners = styled.div`
-    background-position: cover;
-    color: white;
-    text-align: center;
-    margin: 0 auto;
-    display: grid;
-    flex-direction: column;
-    padding-bottom: 5%;
-    padding-top: 5%;
-  `
-
-  const KEKTRADE = PENGUIN_URLS.home.concat(KEK.address)
-  const ISLATRADE = PENGUIN_URLS.home.concat(ISLA.address)
-  const SARENTRADE = PENGUIN_URLS.home.concat(SAREN.address)
 
   const VERSION_TEXT = 'Version '.concat(VERSION)
 
   return (
     <>
       <PenguinParty className="penguin-party">
-        <img
-          width={'20%'}
-          height={'20%'}
-          src={PenguinMainLogo}
-          alt="logo"
-          style={{ margin: '8%', paddingLeft: '2%' }}
-        />
         <AboutText>
           <h1>ABOUT</h1>
           <p>
@@ -164,57 +137,7 @@ export default function ShowTeamPage() {
             Graphic Designer
           </div>
         </Devs>
-        <Partners>
-          <h2>
-            Our{' '}
-            <span role="img" aria-label="penguin">
-              🐧
-            </span>{' '}
-            Partners
-          </h2>
 
-          <div className="saren-div">
-            <a href="https://saren.io/" target="_blank" rel="noopener noreferrer">
-              <img className="pic" src={SarenLogo} alt="" />
-            </a>
-            <br></br>
-            Saren is a community built set of tools that provide reliable cryptocurrency data to help consumers using
-            blockchain technology.
-            <div className="trade">
-              <h3>
-                <a href={SARENTRADE}>Trade</a>
-              </h3>
-            </div>
-          </div>
-
-          <div className="crypto-div">
-            <a href="https://cryptokek.com/" target="_blank" rel="noopener noreferrer">
-              <img className="pic" src={CryptokekLogo} alt="" />
-            </a>
-            <br></br>
-            CryptoKek is an analytics platform for decentralized exchanges designed to offer cutting edge insight to
-            support its users in their endeavors.
-            <div className="trade">
-              <h3>
-                <a href={KEKTRADE}>Trade</a>
-              </h3>
-            </div>
-          </div>
-
-          <div className="crypto-div">
-            <a href="https://defiville.finance/" target="_blank" rel="noopener noreferrer">
-              <img className="pic" src={DefiVille} alt="" />
-            </a>
-            <br></br>
-            Defiville is a 100% community-led gamified social experiment focused on incentivizing participation in
-            yield-farming protocols.
-            <div className="trade">
-              <h3>
-                <a href={ISLATRADE}>Trade</a>
-              </h3>
-            </div>
-          </div>
-        </Partners>
         {VERSION_TEXT}
       </PenguinArea>
     </>
