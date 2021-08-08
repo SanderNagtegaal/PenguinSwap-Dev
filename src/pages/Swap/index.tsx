@@ -18,6 +18,7 @@ import { ButtonConfirmed, ButtonError, ButtonGray, ButtonLight, ButtonPrimary } 
 import { GreyCard } from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
+import CryptoKek from 'components/CryptoKek'
 import CurrencyLogo from '../../components/CurrencyLogo'
 import Loader from '../../components/Loader'
 import Row, { AutoRow, RowFixed } from '../../components/Row'
@@ -663,6 +664,7 @@ export default function Swap({ history }: RouteComponentProps) {
       {!swapIsUnsupported ? null : (
         <UnsupportedCurrencyFooter show={swapIsUnsupported} currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
+      <CryptoKek />
     </>
   )
 }
