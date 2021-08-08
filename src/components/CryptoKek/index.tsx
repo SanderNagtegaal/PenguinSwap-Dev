@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Currency } from '@uniswap/sdk/dist/index'
 import { useDerivedSwapInfo } from 'state/swap/hooks'
 import { Field } from 'state/swap/actions'
-import { WrappedTokenInfo } from '../../state/lists/hooks'
-import { USDC } from '../../constants'
+import { WrappedTokenInfo } from 'state/lists/wrappedTokenInfo'
+import { USDC } from 'constants/tokens'
+import { Currency } from '@uniswap/sdk-core/dist/index'
 export default function CryptoKek() {
   let [tokenAddress, setTokenAddress] = useState('0x30bcd71b8d21fe830e493b30e90befba29de9114')
   const { currencies } = useDerivedSwapInfo()
@@ -35,7 +35,7 @@ export default function CryptoKek() {
   function kekFrame($token: string) {
     const CRYPTO_KEK_LINK = `https://keks.app/t/${$token}/chart`
     return {
-      __html: `<iframe src=${CRYPTO_KEK_LINK} width="100%" height="749px" frameBorder="0" allowFullScreen="true" scrolling="no" position='absolute'</iframe>`
+      __html: `<iframe src=${CRYPTO_KEK_LINK} width="100%" height="749px" frameBorder="0" allowFullScreen="true" scrolling="no" position='absolute'</iframe>`,
     }
   }
 
